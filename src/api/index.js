@@ -1,13 +1,18 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001';
-
-const token = localStorage.getItem('token');
+const baseURL = 'https://gpt-server-voao.onrender.com';
 
 export const axiosInstance = axios.create({
     baseURL,
     headers: {
-        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
 });
+
+
+export const updateAxiosHeaders = () => {
+  let token = localStorage.getItem('token');
+  axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
+
+updateAxiosHeaders();

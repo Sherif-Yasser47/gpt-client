@@ -1,9 +1,10 @@
-import { axiosInstance } from './index';
+import { axiosInstance, updateAxiosHeaders } from './index';
 
 export const sendMessage = (message) => {
     const payload = {
         question: message,
     };
+    updateAxiosHeaders();
     return axiosInstance.post('/api/gpt', payload);
 }
 
